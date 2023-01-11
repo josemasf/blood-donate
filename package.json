@@ -2,6 +2,7 @@
   "name": "blood-donate",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cherio": "^1.0.0-rc.2"
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.0",
+    "request": "^2.88.2"
   }
 }
