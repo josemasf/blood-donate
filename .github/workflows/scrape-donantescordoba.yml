@@ -26,4 +26,4 @@ jobs:
           npm run scrape
           git config user.name donantescordoba-bot
           git diff --quiet && git diff --staged --quiet || git commit -am "[bot] update donantescordoba database"
-          git push origin main
+          git push origin master
