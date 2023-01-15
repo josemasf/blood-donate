@@ -5,13 +5,20 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api": "npx wrangler dev",
+    "publish:api": "npx wrangler publish"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
+    "hono": "^2.7.2",
     "node-fetch": "^3.3.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "wrangler": "^2.7.1"
+  },
+  "devDependencies": {
+    "vitest": "^0.27.1"
   }
 }

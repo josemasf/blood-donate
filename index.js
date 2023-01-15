@@ -28,7 +28,7 @@ const run = async () => {
     if (index === 8) {
       $lastChanged = $el.find("b").text();
     } else {
-      types.push($el.text());
+      types.push($el.text().trim());
     }
   });
 
@@ -39,12 +39,12 @@ const run = async () => {
     const $el = $(el);
     if (index === 8) return;
 
-    states.push($el.attr().title);
+    states.push($el.attr().title.trim());
   });
 
   const result = [];
   types.forEach((type, index) => {
-    result.push({ type, state: states[index] });
+    result.push({ type, state: states[index], date: new Date().toISOString() });
   });
 
   const lastChanged = $lastChanged
@@ -55,9 +55,8 @@ const run = async () => {
 
   //const dateUpdate = lastChanged
 
-  lastChanged.writeDBFile("blood-status", result);
-
-  writeDBFile("blood-update", { lastChanged });
+  await writeDBFile("blood-status", result);
+  await writeDBFile("blood-update", { lastChanged });
 };
 
 const DB_PATH = path.join(process.cwd(), "./db/");
