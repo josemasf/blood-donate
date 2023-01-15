@@ -2,23 +2,23 @@ import { unstable_dev } from "wrangler";
 import { describe, expect, it, beforeAll, afterAll } from "vitest";
 
 describe("Worker", () => {
-	let worker;
+  let worker;
 
-	beforeAll(async () => {
-		worker = await unstable_dev("src/index.js", {
-			experimental: { disableExperimentalWarning: true },
-		});
-	});
+  beforeAll(async () => {
+    worker = await unstable_dev("src/index.js", {
+      experimental: { disableExperimentalWarning: true },
+    });
+  });
 
-	afterAll(async () => {
-		await worker.stop();
-	});
+  afterAll(async () => {
+    await worker.stop();
+  });
 
-	it("should return Hello World", async () => {
-		const resp = await worker.fetch();
-		if (resp) {
-			const text = await resp.text();
-			expect(text).toMatchInlineSnapshot(`"Hello World!"`);
-		}
-	});
+  it("should return Hello Hono", async () => {
+    const resp = await worker.fetch();
+    if (resp) {
+      const text = await resp.text();
+      expect(text).toMatchInlineSnapshot(`"Hello Hono!"`);
+    }
+  });
 });

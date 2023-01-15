@@ -5,9 +5,10 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "api": "npx wrangler dev",
-    "publish:api": "npx wrangler publish"
+    "test": "vitest",
+    "dev:api": "npx wrangler dev",
+    "publish:api": "npx wrangler publish",
+    "scrape": "node --no-warnings scraping/index.js"
   },
   "author": "",
   "license": "ISC",
