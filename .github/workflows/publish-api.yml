@@ -2,8 +2,8 @@ name: Deploy API
 
 on:
   push:
-    branches:
-      - master
+    paths:
+      - "**.json"
   repository_dispatch:
     types:
       - webhook
