@@ -1,12 +1,14 @@
 name: Deploy API
 
 on:
-  push:
-    paths:
-      - "**.json"
+  workflow_dispatch:
+
   repository_dispatch:
     types:
       - webhook
+
+  schedule:
+    - cron: "15 15,22 * * *"
 
 jobs:
   deploy:
