@@ -2,41 +2,41 @@
   {
     "type": "O+",
     "state": "Nivel critico",
-    "date": "2023-06-04T22:08:16.194Z"
+    "date": "2023-06-05T15:09:43.356Z"
   },
   {
     "type": "A+",
     "state": "Nivel bajo",
-    "date": "2023-06-04T22:08:16.194Z"
+    "date": "2023-06-05T15:09:43.356Z"
   },
   {
     "type": "B+",
     "state": "Nivel suficiente",
-    "date": "2023-06-04T22:08:16.194Z"
+    "date": "2023-06-05T15:09:43.356Z"
   },
   {
     "type": "AB+",
     "state": "Nivel suficiente",
-    "date": "2023-06-04T22:08:16.194Z"
+    "date": "2023-06-05T15:09:43.356Z"
   },
   {
     "type": "O-",
     "state": "Nivel bajo",
-    "date": "2023-06-04T22:08:16.194Z"
+    "date": "2023-06-05T15:09:43.356Z"
   },
   {
     "type": "A-",
     "state": "Nivel bajo",
-    "date": "2023-06-04T22:08:16.194Z"
+    "date": "2023-06-05T15:09:43.356Z"
   },
   {
     "type": "B-",
     "state": "Nivel suficiente",
-    "date": "2023-06-04T22:08:16.194Z"
+    "date": "2023-06-05T15:09:43.356Z"
   },
   {
     "type": "AB-",
     "state": "Nivel suficiente",
-    "date": "2023-06-04T22:08:16.194Z"
+    "date": "2023-06-05T15:09:43.356Z"
   }
 ]
