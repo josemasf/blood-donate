@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { load } from "cheerio";
 import { writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
+import fs from "node:fs";
 
 const url = "http://www.donantescordoba.org";
 
@@ -54,16 +55,29 @@ const run = async () => {
     .replace("-", " ");
 
   //const dateUpdate = lastChanged
+  const currentData = await readDBFile("blood-status");
 
-  await writeDBFile("blood-status", result);
+  const lastData = Array.from(currentData).join(result)
+
+  await writeDBFile("blood-status", lastData);
   await writeDBFile("blood-update", { lastChanged });
 };
 
 const DB_PATH = path.join(process.cwd(), "./db/");
 
 export function readDBFile(dbName) {
-  return readFile(`${DB_PATH}/${dbName}.json`, "utf-8").then(JSON.parse);
+  return new Promise((resolve, reject) => {
+    fs.readFile(`${DB_PATH}/${dbName}.json`, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      console.log((JSON.parse(data)), 'data')
+      resolve(JSON.parse(data));
+    });
+  });
 }
+
 
 export function writeDBFile(dbName, data) {
   return writeFile(
@@ -71,6 +85,14 @@ export function writeDBFile(dbName, data) {
     JSON.stringify(data, null, 2),
     "utf-8"
   );
+}
+
+export function updateDBFile(dbName, data) {
+  fs.appendFile(`${DB_PATH}/${dbName}.json`,JSON.stringify(data, null, 2) ,(err) =>{
+    if(err) throw err;
+    console.log('Update DB data');
+  } )
+
 }
 
 run();
