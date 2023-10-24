@@ -27,4 +27,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           workingDirectory: src
-          command: publish
+          command: deploy
