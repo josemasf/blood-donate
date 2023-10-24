@@ -13,6 +13,9 @@ export async function scrape(url) {
 }
 
 const run = async () => {
+
+  
+
   const response = await fetch(url);
   const body = await response.text();
 
@@ -33,6 +36,18 @@ const run = async () => {
     }
   });
 
+  const lastChanged = $lastChanged
+    .replace("Actualizadas a ", "")
+    .replace(" h.", "")
+    .replaceAll(" ", "")
+    .replace("-", " ");
+
+  const hasChangedData = await hasBeenChanged(lastChanged);
+  if(!hasChangedData) {    
+    await log('No changes in data');
+    return 
+  }
+
   const $states = $("#block-block-16 img");
   const states = [];
 
@@ -48,19 +63,20 @@ const run = async () => {
     result.push({ type, state: states[index], date: new Date().toISOString() });
   });
 
-  const lastChanged = $lastChanged
-    .replace("Actualizadas a ", "")
-    .replace(" h.", "")
-    .replaceAll(" ", "")
-    .replace("-", " ");
-
-  //const dateUpdate = lastChanged
+  
+  
   const currentData = await readDBFile("blood-status");
+  const updatesData = await readDBFile("blood-update");
 
-  const lastData = Array.from(currentData).join(result)
+  const lastData = Array.from(currentData).concat(result)
+
+  const logUpdatesOrigin = Array.from(updatesData).concat({ lastChanged, ejecutionTime: new Date().toISOString() }) 
 
   await writeDBFile("blood-status", lastData);
-  await writeDBFile("blood-update", { lastChanged });
+  await writeDBFile("blood-update", logUpdatesOrigin);
+
+  
+  await log('DB updated successfully');
 };
 
 const DB_PATH = path.join(process.cwd(), "./db/");
@@ -71,8 +87,7 @@ export function readDBFile(dbName) {
       if (err) {
         reject(err);
         return;
-      }
-      console.log((JSON.parse(data)), 'data')
+      }      
       resolve(JSON.parse(data));
     });
   });
@@ -88,11 +103,27 @@ export function writeDBFile(dbName, data) {
 }
 
 export function updateDBFile(dbName, data) {
-  fs.appendFile(`${DB_PATH}/${dbName}.json`,JSON.stringify(data, null, 2) ,(err) =>{
+  fs.appendFile(`${DB_PATH}/${dbName}.json`,JSON.stringify(data, null, 2) ,async (err) =>{
     if(err) throw err;
-    console.log('Update DB data');
+    await log('Update DB data');
   } )
+}
 
+export async function hasBeenChanged (lastChanged) {
+  const updatesData = await readDBFile("blood-update");
+
+  const lastUpdate = updatesData[updatesData.length - 1].lastChanged
+  if(lastUpdate === lastChanged) return false;
+  return true;
+}
+
+export async function log (data) {
+  const logData = await readDBFile("blood-logs");
+  const dataToSave = Array.from(logData).concat({ message: data, datetime: new Date().toISOString() }) 
+
+  await writeDBFile("blood-logs", dataToSave);
+
+  console.log(data);
 }
 
 run();
