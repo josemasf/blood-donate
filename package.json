@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "vitest",
-    "dev:api": "pnpm dlxx wrangler dev",
+    "dev:api": "pnpm dlx wrangler dev",
     "publish:api": "pnpm dlx wrangler deploy",
     "deploy:api": "pnpm dlx wrangler deploy",
     "scrape": "node --no-warnings scraping/index.js"

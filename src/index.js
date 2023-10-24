@@ -1,5 +1,7 @@
 import status from "../db/blood-status.json";
 import update from "../db/blood-update.json";
+import logs from "../db/blood-logs.json";
+
 import { Hono } from "hono";
 import { poweredBy } from "hono/powered-by";
 
@@ -10,6 +12,7 @@ app.use(cors({ origin: "*" }));
 
 app.use("*", poweredBy());
 
+app.get("/logs", (ctx) => ctx.json(logs));
 app.get("/update", (ctx) => ctx.json(update));
 app.get("/last-status", (ctx) => {
 
@@ -51,6 +54,10 @@ app.get("/", (ctx) => {
     {
       endpoint: "/update",
       description: "Returns the date of last update of the information",
+    },
+    {
+      endpoint: "/logs",
+      description: "Returns the logs of the scraper running",
     },
   ]);
 });
