@@ -11,7 +11,20 @@ app.use(cors({ origin: "*" }));
 app.use("*", poweredBy());
 
 app.get("/update", (ctx) => ctx.json(update));
+app.get("/last-status", (ctx) => {
 
+  const maxDateObj = status.reduce((max, obj) => {
+    return obj.date > max.date ? obj : max;
+  });
+
+  const filteredData = status.filter((obj) => {
+    const objDate = new Date(obj.date);
+    return objDate === maxDateObj;
+  });
+  console.log(filteredData);
+
+  ctx.json(filteredData)
+});
 app.get("/status", (ctx) => ctx.json(status));
 app.get("/status/:type", (ctx) => {
   const foundStatusbyType = status.find(
