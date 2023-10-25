@@ -14,6 +14,8 @@ Blood donate is a scraper for Córdoba (Spain) Blood Bank Status. It also provid
 - Request: a simplified library for making HTTP requests from Node.js.
 - Wrangler: a command-line tool for working with Cloudflare Workers.
 
+![Architecture](doc/architecture.png)
+
 ## :rocket: Actions
 
 We have 2 Github Actions
