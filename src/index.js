@@ -15,8 +15,9 @@ app.use("*", poweredBy());
 app.get("/logs", (ctx) => ctx.json(logs));
 app.get("/update", (ctx) => ctx.json(update));
 app.get("/last-status", (ctx) => {
-  const result = status.result[0].status.sort((a, b) => new Date(b.date) - new Date(a.date));   
-  return ctx.json({result})
+  
+  const result = status.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+  return ctx.json(result)
 });
 app.get("/status", (ctx) => ctx.json(status));
 app.get("/status/:type", (ctx) => {  
@@ -28,6 +29,10 @@ app.get("/status/:type", (ctx) => {
 });
 app.get("/", (ctx) => {
   return ctx.json([
+    {
+      endpoint: "/last-status",
+      description: "Returns the last status of the blood bank of Córdoba Spain",
+    },
     {
       endpoint: "/status",
       description: "Returns status of the blood bank of Córdoba Spain",
