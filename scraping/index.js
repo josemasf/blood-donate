@@ -60,7 +60,7 @@ const run = async () => {
 
   const result = [];
   types.forEach((type, index) => {
-    result.push({ type, state: states[index], date: new Date().toISOString() });
+    result.push({ type, state: states[index] });
   });
 
   
@@ -68,7 +68,7 @@ const run = async () => {
   const currentData = await readDBFile("blood-status");
   const updatesData = await readDBFile("blood-update");
 
-  const lastData = Array.from(currentData).concat(result)
+  const lastData = Array.from(currentData.result).concat({date: new Date().toISOString(), result})
 
   const logUpdatesOrigin = Array.from(updatesData).concat({ lastChanged, ejecutionTime: new Date().toISOString() }) 
 
