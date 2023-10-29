@@ -21,8 +21,9 @@ app.get("/last-status", (ctx) => {
 });
 app.get("/status", (ctx) => ctx.json(status));
 app.get("/status/:type", (ctx) => {  
-  const sortedStatus = status.result[0].status.sort((a, b) => new Date(b.date) - new Date(a.date));  
-  const statusFiltered = sortedStatus.find((item) => item.type === ctx.req.param("type"));
+  const bloodType = ctx.req.param("type").toUpperCase();
+  const sortedStatus = status.sort((a, b) => new Date(b.date) - new Date(a.date))[0];    
+  const statusFiltered = sortedStatus.result.find((item) => item.type === bloodType);
   return statusFiltered
     ? ctx.json(statusFiltered)
     : ctx.json({ message: `Type ${ctx.req.param("type")} not found` }, 404);
