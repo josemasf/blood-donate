@@ -1,21 +1,13 @@
 import fetch from "node-fetch";
 import { load } from "cheerio";
-import { writeFile, readFile } from "node:fs/promises";
+import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import fs from "node:fs";
 
 const url = "http://www.donantescordoba.org";
-
-export async function scrape(url) {
-  const res = await fetch(url);
-  const html = await res.text();
-  return cheerio.load(html);
-}
+//const url = "https://web.archive.org/web/20230331130951/http://www.donantescordoba.org/";
 
 const run = async () => {
-
-  
-
   const response = await fetch(url);
   const body = await response.text();
 
@@ -68,7 +60,7 @@ const run = async () => {
   const currentData = await readDBFile("blood-status");
   const updatesData = await readDBFile("blood-update");
 
-  const lastData = Array.from(currentData.result).concat({date: new Date().toISOString(), result})
+  const lastData = Array.from(currentData).concat({date: new Date().toISOString(), result})
 
   const logUpdatesOrigin = Array.from(updatesData).concat({ lastChanged, ejecutionTime: new Date().toISOString() }) 
 
