@@ -92,8 +92,8 @@
                 ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
+                "h": 3,
+                "w": 3,
                 "x": 0,
                 "y": 0
             },
@@ -210,9 +210,9 @@
                 ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
-                "x": 5,
+                "h": 3,
+                "w": 3,
+                "x": 3,
                 "y": 0
             },
             "id": 5,
@@ -294,8 +294,8 @@
             },
             "gridPos": {
                 "h": 10,
-                "w": 14,
-                "x": 10,
+                "w": 5,
+                "x": 6,
                 "y": 0
             },
             "id": 1,
@@ -341,9 +341,219 @@
                     "urlPath": "/last-status"
                 }
             ],
-            "title": "Panel Title",
+            "title": "Current status",
             "transformations": [],
             "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "marcusolsson-json-datasource",
+                "uid": "cf6391d6-431f-4490-9eca-4d322ba28786"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "fixed"
+                    },
+                    "custom": {
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "latitud"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.hideFrom",
+                                "value": {
+                                    "legend": true,
+                                    "tooltip": true,
+                                    "viz": false
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "longitud"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.hideFrom",
+                                "value": {
+                                    "legend": true,
+                                    "tooltip": true,
+                                    "viz": false
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 22,
+                "w": 13,
+                "x": 11,
+                "y": 0
+            },
+            "id": 12,
+            "options": {
+                "basemap": {
+                    "config": {},
+                    "name": "Layer 0",
+                    "opacity": 0.9,
+                    "type": "osm-standard"
+                },
+                "controls": {
+                    "mouseWheelZoom": true,
+                    "showAttribution": true,
+                    "showDebug": false,
+                    "showMeasure": false,
+                    "showScale": false,
+                    "showZoom": true
+                },
+                "layers": [
+                    {
+                        "config": {
+                            "showLegend": true,
+                            "style": {
+                                "color": {
+                                    "fixed": "dark-blue"
+                                },
+                                "opacity": 0.7,
+                                "rotation": {
+                                    "fixed": 0,
+                                    "max": 360,
+                                    "min": -360,
+                                    "mode": "mod"
+                                },
+                                "size": {
+                                    "fixed": 5,
+                                    "max": 15,
+                                    "min": 2
+                                },
+                                "symbol": {
+                                    "fixed": "img/icons/unicons/ambulance.svg",
+                                    "mode": "fixed"
+                                },
+                                "symbolAlign": {
+                                    "horizontal": "center",
+                                    "vertical": "center"
+                                },
+                                "text": {
+                                    "fixed": "",
+                                    "mode": "field"
+                                },
+                                "textConfig": {
+                                    "fontSize": 12,
+                                    "offsetX": 0,
+                                    "offsetY": 0,
+                                    "textAlign": "center",
+                                    "textBaseline": "middle"
+                                }
+                            }
+                        },
+                        "location": {
+                            "latitude": "latitud",
+                            "longitude": "longitud",
+                            "mode": "coords"
+                        },
+                        "name": "Donations",
+                        "tooltip": true,
+                        "type": "markers"
+                    }
+                ],
+                "tooltip": {
+                    "mode": "details"
+                },
+                "view": {
+                    "allLayers": true,
+                    "id": "coords",
+                    "lat": 37.974338,
+                    "lon": -5.138063,
+                    "zoom": 8.3
+                }
+            },
+            "pluginVersion": "10.2.0",
+            "targets": [
+                {
+                    "cacheDurationSeconds": 300,
+                    "datasource": {
+                        "type": "marcusolsson-json-datasource",
+                        "uid": "cf6391d6-431f-4490-9eca-4d322ba28786"
+                    },
+                    "fields": [
+                        {
+                            "jsonPath": "$.colectas[*].latitud",
+                            "type": "number"
+                        },
+                        {
+                            "jsonPath": "$.colectas[*].longitud",
+                            "language": "jsonpath",
+                            "name": "",
+                            "type": "number"
+                        },
+                        {
+                            "jsonPath": "$.colectas[*].fecha",
+                            "language": "jsonpath",
+                            "name": ""
+                        },
+                        {
+                            "jsonPath": "$.colectas[*].localidad",
+                            "language": "jsonpath",
+                            "name": ""
+                        },
+                        {
+                            "jsonPath": "$.colectas[*].centro",
+                            "language": "jsonpath",
+                            "name": ""
+                        }
+                    ],
+                    "method": "GET",
+                    "queryParams": "",
+                    "refId": "A",
+                    "urlPath": ""
+                }
+            ],
+            "title": "Donations in Córdoba",
+            "transformations": [
+                {
+                    "id": "convertFieldType",
+                    "options": {
+                        "conversions": [
+                            {
+                                "dateFormat": "DD/MM/YYYY",
+                                "destinationType": "time",
+                                "targetField": "fecha"
+                            }
+                        ],
+                        "fields": {}
+                    }
+                }
+            ],
+            "type": "geomap"
         },
         {
             "datasource": {
@@ -415,10 +625,10 @@
                 ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
+                "h": 3,
+                "w": 3,
                 "x": 0,
-                "y": 4
+                "y": 3
             },
             "id": 7,
             "options": {
@@ -533,10 +743,10 @@
                 ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
-                "x": 5,
-                "y": 4
+                "h": 3,
+                "w": 3,
+                "x": 3,
+                "y": 3
             },
             "id": 8,
             "options": {
@@ -651,10 +861,10 @@
                 ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
+                "h": 3,
+                "w": 3,
                 "x": 0,
-                "y": 8
+                "y": 6
             },
             "id": 4,
             "options": {
@@ -769,10 +979,10 @@
                 ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
-                "x": 5,
-                "y": 8
+                "h": 3,
+                "w": 3,
+                "x": 3,
+                "y": 6
             },
             "id": 9,
             "options": {
@@ -816,215 +1026,6 @@
             "title": "B+ Status",
             "transformations": [],
             "type": "stat"
-        },
-        {
-            "datasource": {
-                "type": "marcusolsson-json-datasource",
-                "uid": "cf6391d6-431f-4490-9eca-4d322ba28786"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "fixed"
-                    },
-                    "custom": {
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    }
-                },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "latitud"
-                        },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": true,
-                                    "tooltip": true,
-                                    "viz": false
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "longitud"
-                        },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": true,
-                                    "tooltip": true,
-                                    "viz": false
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            "gridPos": {
-                "h": 11,
-                "w": 14,
-                "x": 10,
-                "y": 10
-            },
-            "id": 12,
-            "options": {
-                "basemap": {
-                    "config": {},
-                    "name": "Layer 0",
-                    "type": "default"
-                },
-                "controls": {
-                    "mouseWheelZoom": true,
-                    "showAttribution": true,
-                    "showDebug": false,
-                    "showMeasure": false,
-                    "showScale": false,
-                    "showZoom": true
-                },
-                "layers": [
-                    {
-                        "config": {
-                            "showLegend": true,
-                            "style": {
-                                "color": {
-                                    "fixed": "dark-blue"
-                                },
-                                "opacity": 0.4,
-                                "rotation": {
-                                    "fixed": 0,
-                                    "max": 360,
-                                    "min": -360,
-                                    "mode": "mod"
-                                },
-                                "size": {
-                                    "fixed": 5,
-                                    "max": 15,
-                                    "min": 2
-                                },
-                                "symbol": {
-                                    "fixed": "img/icons/marker/x-mark.svg",
-                                    "mode": "fixed"
-                                },
-                                "symbolAlign": {
-                                    "horizontal": "center",
-                                    "vertical": "center"
-                                },
-                                "text": {
-                                    "fixed": "",
-                                    "mode": "field"
-                                },
-                                "textConfig": {
-                                    "fontSize": 12,
-                                    "offsetX": 0,
-                                    "offsetY": 0,
-                                    "textAlign": "center",
-                                    "textBaseline": "middle"
-                                }
-                            }
-                        },
-                        "location": {
-                            "latitude": "latitud",
-                            "longitude": "longitud",
-                            "mode": "coords"
-                        },
-                        "name": "Donaciones",
-                        "tooltip": true,
-                        "type": "markers"
-                    }
-                ],
-                "tooltip": {
-                    "mode": "details"
-                },
-                "view": {
-                    "allLayers": true,
-                    "id": "coords",
-                    "lat": 37.974338,
-                    "lon": -5.138063,
-                    "zoom": 8.3
-                }
-            },
-            "pluginVersion": "10.2.0",
-            "targets": [
-                {
-                    "cacheDurationSeconds": 300,
-                    "datasource": {
-                        "type": "marcusolsson-json-datasource",
-                        "uid": "cf6391d6-431f-4490-9eca-4d322ba28786"
-                    },
-                    "fields": [
-                        {
-                            "jsonPath": "$.colectas[*].latitud",
-                            "type": "number"
-                        },
-                        {
-                            "jsonPath": "$.colectas[*].longitud",
-                            "language": "jsonpath",
-                            "name": "",
-                            "type": "number"
-                        },
-                        {
-                            "jsonPath": "$.colectas[*].fecha",
-                            "language": "jsonpath",
-                            "name": ""
-                        },
-                        {
-                            "jsonPath": "$.colectas[*].localidad",
-                            "language": "jsonpath",
-                            "name": ""
-                        },
-                        {
-                            "jsonPath": "$.colectas[*].centro",
-                            "language": "jsonpath",
-                            "name": ""
-                        }
-                    ],
-                    "method": "GET",
-                    "queryParams": "",
-                    "refId": "A",
-                    "urlPath": ""
-                }
-            ],
-            "title": "Donaciones en la provincia",
-            "transformations": [
-                {
-                    "id": "convertFieldType",
-                    "options": {
-                        "conversions": [
-                            {
-                                "dateFormat": "DD/MM/YYYY",
-                                "destinationType": "time",
-                                "targetField": "fecha"
-                            }
-                        ],
-                        "fields": {}
-                    }
-                }
-            ],
-            "type": "geomap"
         },
         {
             "datasource": {
@@ -1096,10 +1097,10 @@
                 ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
+                "h": 3,
+                "w": 3,
                 "x": 0,
-                "y": 12
+                "y": 9
             },
             "id": 10,
             "options": {
@@ -1214,10 +1215,10 @@
                 ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
-                "x": 5,
-                "y": 12
+                "h": 3,
+                "w": 3,
+                "x": 3,
+                "y": 9
             },
             "id": 2,
             "options": {
@@ -1261,9 +1262,252 @@
             "title": "O+ Status",
             "transformations": [],
             "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "marcusolsson-json-datasource",
+                "uid": "a85f4615-17e0-4e5f-ba26-935663b9a1c5"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "short"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 5,
+                "x": 6,
+                "y": 10
+            },
+            "id": 13,
+            "options": {
+                "colorMode": "none",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [],
+                    "fields": "/.*/",
+                    "values": true
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.2.0",
+            "targets": [
+                {
+                    "cacheDurationSeconds": 300,
+                    "datasource": {
+                        "type": "marcusolsson-json-datasource",
+                        "uid": "a85f4615-17e0-4e5f-ba26-935663b9a1c5"
+                    },
+                    "fields": [
+                        {
+                            "jsonPath": "$.date",
+                            "type": "time"
+                        }
+                    ],
+                    "method": "GET",
+                    "queryParams": "",
+                    "refId": "A",
+                    "urlPath": "/last-status"
+                }
+            ],
+            "title": "Last updated date",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-GrYlRd"
+                    },
+                    "custom": {
+                        "fillOpacity": 70,
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineWidth": 0,
+                        "spanNulls": false
+                    },
+                    "fieldMinMax": false,
+                    "mappings": [
+                        {
+                            "options": {
+                                "No changes in data": {
+                                    "color": "semi-dark-yellow",
+                                    "index": 0
+                                }
+                            },
+                            "type": "value"
+                        }
+                    ],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": ""
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 11,
+                "x": 0,
+                "y": 12
+            },
+            "id": 15,
+            "options": {
+                "alignValue": "left",
+                "legend": {
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "mergeValues": true,
+                "rowHeight": 0.83,
+                "showValue": "auto",
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "datasource",
+                        "uid": "-- Dashboard --"
+                    },
+                    "panelId": 14,
+                    "refId": "A"
+                }
+            ],
+            "title": "Panel Title",
+            "type": "state-timeline"
+        },
+        {
+            "datasource": {
+                "type": "marcusolsson-json-datasource",
+                "uid": "a85f4615-17e0-4e5f-ba26-935663b9a1c5"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 11,
+                "x": 0,
+                "y": 17
+            },
+            "id": 14,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true,
+                "sortBy": [
+                    {
+                        "desc": true,
+                        "displayName": "datetime"
+                    }
+                ]
+            },
+            "pluginVersion": "10.2.0",
+            "targets": [
+                {
+                    "cacheDurationSeconds": 300,
+                    "datasource": {
+                        "type": "marcusolsson-json-datasource",
+                        "uid": "a85f4615-17e0-4e5f-ba26-935663b9a1c5"
+                    },
+                    "fields": [
+                        {
+                            "jsonPath": "$[*].datetime",
+                            "type": "time"
+                        },
+                        {
+                            "jsonPath": "$[*].message",
+                            "language": "jsonpath",
+                            "name": "",
+                            "type": "string"
+                        }
+                    ],
+                    "method": "GET",
+                    "queryParams": "",
+                    "refId": "A",
+                    "urlPath": "/logs"
+                }
+            ],
+            "title": "Logs ejecution",
+            "type": "table"
         }
     ],
-    "refresh": false,
+    "refresh": "",
     "schemaVersion": 38,
     "tags": [],
     "templating": {
@@ -1283,6 +1527,6 @@
     "timezone": "Europe/Madrid",
     "title": "Estado del banco de sangre de Córdoba",
     "uid": "c5faa191-af84-4e49-8b0d-5cac9afd13a8",
-    "version": 8,
+    "version": 15,
     "weekStart": "monday"
 }
