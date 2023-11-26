@@ -775,5 +775,42 @@
         "state": "Nivel suficiente"
       }
     ]
+  },
+  {
+    "date": "2023-11-26T15:08:58.104Z",
+    "result": [
+      {
+        "type": "O+",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "A+",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "B+",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "AB+",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "O-",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "A-",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "B-",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "AB-",
+        "state": "Nivel suficiente"
+      }
+    ]
   }
 ]
