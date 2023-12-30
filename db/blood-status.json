@@ -1441,5 +1441,42 @@
         "state": "Nivel critico"
       }
     ]
+  },
+  {
+    "date": "2023-12-30T15:08:48.836Z",
+    "result": [
+      {
+        "type": "O+",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "A+",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "B+",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "AB+",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "O-",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "A-",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "B-",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "AB-",
+        "state": "Nivel critico"
+      }
+    ]
   }
 ]
