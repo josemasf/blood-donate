@@ -2181,5 +2181,42 @@
         "state": "Nivel critico"
       }
     ]
+  },
+  {
+    "date": "2024-01-19T15:10:54.468Z",
+    "result": [
+      {
+        "type": "O+",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "A+",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "B+",
+        "state": "Nivel bajo"
+      },
+      {
+        "type": "AB+",
+        "state": "Nivel bajo"
+      },
+      {
+        "type": "O-",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "A-",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "B-",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "AB-",
+        "state": "Nivel critico"
+      }
+    ]
   }
 ]
