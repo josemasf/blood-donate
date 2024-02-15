@@ -3180,5 +3180,42 @@
         "state": "Nivel suficiente"
       }
     ]
+  },
+  {
+    "date": "2024-02-15T15:09:46.557Z",
+    "result": [
+      {
+        "type": "O+",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "A+",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "B+",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "AB+",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "O-",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "A-",
+        "state": "Nivel critico"
+      },
+      {
+        "type": "B-",
+        "state": "Nivel suficiente"
+      },
+      {
+        "type": "AB-",
+        "state": "Nivel suficiente"
+      }
+    ]
   }
 ]
