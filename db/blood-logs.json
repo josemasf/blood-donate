@@ -1838,5 +1838,9 @@
   {
     "message": "No changes in data",
     "datetime": "2024-07-13T22:09:23.972Z"
+  },
+  {
+    "message": "DB updated successfully",
+    "datetime": "2024-07-14T15:14:46.485Z"
   }
 ]
