@@ -1982,5 +1982,9 @@
   {
     "message": "No changes in data",
     "datetime": "2024-08-03T22:09:38.458Z"
+  },
+  {
+    "message": "DB updated successfully",
+    "datetime": "2024-08-04T15:11:19.451Z"
   }
 ]
