@@ -2314,5 +2314,9 @@
   {
     "message": "No changes in data",
     "datetime": "2024-09-18T22:11:42.023Z"
+  },
+  {
+    "message": "DB updated successfully",
+    "datetime": "2024-09-19T15:12:49.689Z"
   }
 ]
