@@ -2510,5 +2510,9 @@
   {
     "message": "DB updated successfully",
     "datetime": "2024-10-18T15:12:56.086Z"
+  },
+  {
+    "message": "No changes in data",
+    "datetime": "2024-10-18T22:11:22.629Z"
   }
 ]
